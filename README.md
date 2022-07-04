@@ -1,4 +1,9 @@
 # cobra-tools
+
+![Last commit][last commit]
+[![Release][release-badge]][release]
+[![Discord][Discord-badge]][Discord]
+
 "~~Life~~ Modding finds a way."
 
 A simple GUI for extracting OVL and OVS archives and modifying their contents, as well as editors for the associated in-house file formats. Also includes a model plugin for blender.
@@ -15,11 +20,33 @@ You need to have installed:
 - [Python 3.7 x64 bit](https://www.python.org/downloads/windows/) (**make sure you add it to the system path during installation;** 32 bit versions of python will hit their memory limit trying to read large OVLs, so 64b is recommended.)
 - [Microsoft Visual C++ Redistributable 2017 x64](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) (needed for texture conversion - you will likely have this installed already)
 - [Microsoft Visual C++ Redistributable 2013 x86](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) (needed for lua decompile - x86 version for now)
-#### Install python dependencies
-- open a command shell and execute the following line: 
-```
-pip install pyqt5 imageio
-```  
+#### Install python and dependencies
+- open a command shell and execute the following line:   
+  This will install the latest python 3 version for you, where the `-l` option allows you to choose where the program is installed (optional):
+  
+  ```powershell
+
+  winget install --id Python.Python.3 -l %LocalAppData%\Programs\Python\Python310\
+  
+  ```
+
+  To find and install a specific version, run the following command to show all versions of Python 3 in sequence, then select the version you want：
+  
+  ```powershell
+
+  winget show Python.Python.3 --versions
+  winget install --id Python.Python.3 -v 3.7.9150.0
+  
+  ```
+
+  Install the required dependencies, you can also update them with this command:
+  
+  ```python
+  
+  pip install -U pip pyqt5 imageio
+  
+  ```
+
 In case this commands tells you upgrade pip, follow the instructions and then try again until all the requirements are met.
 
 ### Blender Plugin Installation
@@ -60,3 +87,9 @@ By downloading and using this software, you agree to the following conditions:
 Some Discords where modding progress is discussed can be found here:
 
 - [Frontier Modding Club](https://discord.gg/Su4jXKk)
+
+  [Discord-badge]: https://img.shields.io/discord/680909673607463131?label=Open%20Naja%20Modding%20Community&logo=discord
+  [Discord]: https://discord.gg/Su4jXKk
+  [last commit]: https://img.shields.io/github/last-commit/OpenNaja/cobra-tools
+  [release-badge]: https://img.shields.io/github/v/release/OpenNaja/cobra-tools?label=Release
+  [release]: https://github.com/OpenNaja/cobra-tools/releases/latest
