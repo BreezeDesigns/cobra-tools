@@ -106,17 +106,14 @@ class Pointer:
 			# process the generated data
 			try:
 				self.write_template()
+			except TypeError:
+				raise TypeError(f"Failed to write pointer data {self.data} type: {type(self.data)} as {self.template}")
 			except struct.error:
 				raise TypeError(f"Failed to write pointer data {self.data} type: {type(self.data)} as {self.template}")
 
 	def write_template(self):
 		assert self.template is not None
-		# align pointer
-		if isinstance(self.data, str):
-			alignment = 1
-		else:
-			alignment = 16
-		self.frag.struct_ptr.write_instance(self.template, self.data, alignment=alignment)
+		self.frag.struct_ptr.write_instance(self.template, self.data)
 
 	def __repr__(self):
 		s = self.get_info_str()
